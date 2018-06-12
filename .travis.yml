@@ -9,11 +9,6 @@ services:
 env:
   - DB=pgsql
 
-script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare
-  - bundle exec rake
-
 before_script:
   - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database What_BE_test;' -U postgres
+  - RAILS_ENV=test bundle exec rake db:create
