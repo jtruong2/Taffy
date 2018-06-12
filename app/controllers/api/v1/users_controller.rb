@@ -8,10 +8,7 @@ class Api::V1::UsersController < ApplicationController
     if user.save
       render json: user
     else
-      error = {
-        "message" => "Could not perform action"
-      }
-      render json: error
+      render json: { "message" => "Could not perform action" }
     end
   end
 
@@ -20,10 +17,7 @@ class Api::V1::UsersController < ApplicationController
     if user.update(safe_params)
       render json: user
     else
-      error = {
-        "message" => "Could not perform action"
-      }
-      render json: error
+      render json: { "message" => "Could not perform action" }
     end
   end
 
