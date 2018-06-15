@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
-  include ActionController::RequestForgeryProtection
-  protect_from_forgery unless:-> {request.format.json?}
+  include ActionController::HttpAuthentication::Basic::ControllerMethods
+  http_basic_authenticate_with name: "test_name", password: "test_pass"
 
   def log_in(user)
     session[:user_id] = user.id
